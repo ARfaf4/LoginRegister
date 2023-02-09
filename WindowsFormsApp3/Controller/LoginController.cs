@@ -45,7 +45,8 @@ namespace WindowsFormsApp3.Controller
         {
             using (BazaDanniEntities2 db = new BazaDanniEntities2())
             {
-                db.Users.Remove(id);
+                var userToDelete = db.Users.Where(u => u.Id == id).FirstOrDefault();
+                db.Users.Remove(userToDelete);
                 db.SaveChanges();
             }
         } 
